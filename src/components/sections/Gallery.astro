@@ -1,0 +1,104 @@
+---
+import Reveal from "../animations/Reveal.astro";
+import { Image } from "astro:assets";
+
+import ambienteImg from "../../assets/images/ambiente.jpeg";
+import trabalho1 from "../../assets/images/trabalho-1.jpeg";
+import trabalho2 from "../../assets/images/trabalho-2.jpeg";
+import trabalho3 from "../../assets/images/trabalho-3.jpeg";
+import trabalho4 from "../../assets/images/trabalho-4.jpeg";
+
+const galleryImages = [
+    {
+        src: ambienteImg,
+        alt: "Ambiente sofisticado do Ateliê",
+        span: "md:col-span-2 md:row-span-2",
+    },
+    {
+        src: trabalho1,
+        alt: "Trabalho de Nail Art",
+        span: "md:col-span-1 md:row-span-1",
+    },
+    {
+        src: trabalho2,
+        alt: "Acabamento Impecável",
+        span: "md:col-span-1 md:row-span-1",
+    },
+    {
+        src: trabalho4,
+        alt: "Elegância nas Unhas",
+        span: "md:col-span-1 md:row-span-2",
+    },
+    {
+        src: trabalho3,
+        alt: "Detalhes do Atendimento",
+        span: "md:col-span-1 md:row-span-1",
+    },
+];
+---
+
+<section id="gallery" class="py-24 bg-transparent overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="mb-16 text-center">
+            <Reveal direction="down">
+                <span
+                    class="text-brand text-xs uppercase tracking-[0.5em] font-medium mb-4 block"
+                >
+                    Portfólio & Espaço
+                </span>
+                <h2
+                    class="text-4xl md:text-5xl font-serif text-white leading-tight"
+                >
+                    Essência e <span class="italic text-brand-light"
+                        >Sofisticação</span
+                    >
+                </h2>
+            </Reveal>
+        </div>
+
+        <div
+            class="grid grid-cols-1 md:grid-cols-4 grid-rows-none md:grid-rows-3 gap-4 h-auto md:h-[900px]"
+        >
+            {
+                galleryImages.map((image, index) => (
+                    <div
+                        class={`group relative overflow-hidden rounded-sm border border-white/5 ${image.span}`}
+                    >
+                        <Reveal
+                            direction="none"
+                            delay={index * 100}
+                            className="h-full w-full"
+                        >
+                            <div class="h-full w-full overflow-hidden">
+                                <Image
+                                    src={image.src as any}
+                                    alt={image.alt}
+                                    class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                    loading="lazy"
+                                    format="webp"
+                                />
+                            </div>
+
+                            {/* Overlay suave */}
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                                <div>
+                                    <p class="text-brand-light font-serif italic text-lg transform translateY(20px) group-hover:translateY(0) transition-transform duration-500">
+                                        {image.alt}
+                                    </p>
+                                    <div class="w-12 h-[1px] bg-brand mt-2 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                                </div>
+                            </div>
+                        </Reveal>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Adiciona um efeito de glassmorphism sutil nos cards ao hover */
+    .group:hover {
+        box-shadow: 0 0 40px rgba(192, 138, 126, 0.15);
+    }
+</style>

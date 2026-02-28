@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import About from "../components/sections/About.astro";
+import CustomCursor from "../components/ui/CustomCursor.astro";
+import Header from "../components/ui/Header.astro";
+import Reveal from "../components/animations/Reveal.astro";
+---
+
+<Layout title="Sobre Nós | Ateliê das Unhas">
+    <CustomCursor />
+    <Header />
+
+    <main class="pt-32">
+        <About />
+
+        <section class="py-24 bg-premium-light">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <Reveal direction="up" delay={100}>
+                        <h3 class="font-serif text-2xl mb-4 text-brand">
+                            Missão
+                        </h3>
+                        <p class="text-charcoal/60 font-light">
+                            Proporcionar bem-estar e elevar a autoestima através
+                            de serviços de estética de alta qualidade.
+                        </p>
+                    </Reveal>
+                    <Reveal direction="up" delay={300}>
+                        <h3 class="font-serif text-2xl mb-4 text-brand">
+                            Visão
+                        </h3>
+                        <p class="text-charcoal/60 font-light">
+                            Ser referência em atendimento personalizado e
+                            técnicas inovadoras no mercado de nails.
+                        </p>
+                    </Reveal>
+                    <Reveal direction="up" delay={500}>
+                        <h3 class="font-serif text-2xl mb-4 text-brand">
+                            Valores
+                        </h3>
+                        <p class="text-charcoal/60 font-light">
+                            Ética, biossegurança, perfeccionismo e compromisso
+                            com a satisfação da cliente.
+                        </p>
+                    </Reveal>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

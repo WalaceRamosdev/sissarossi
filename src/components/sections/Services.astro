@@ -1,0 +1,105 @@
+---
+import { Sparkles, Palette, Zap, Clock } from "lucide-react";
+import Reveal from "../animations/Reveal.astro";
+
+const whatsappNumber = "5527999717063";
+
+const services = [
+    {
+        title: "Unhas de Gel Naturais",
+        description:
+            "Técnica de alta durabilidade com aspecto extremamente natural e saudável.",
+        price: "A partir de R$ 195",
+        icon: Sparkles,
+        message: "Olá! Gostaria de agendar: Unhas de Gel Naturais.",
+    },
+    {
+        title: "Manutenção de Gel",
+        description:
+            "Manutenção periódica para garantir a saúde e beleza das suas unhas.",
+        price: "A partir de R$ 150",
+        icon: Clock,
+        message: "Olá! Gostaria de agendar: Manutenção de Gel.",
+    },
+];
+
+const getWhatsAppLink = (message: string) => {
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+};
+---
+
+<section id="services" class="bg-transparent py-24">
+    <div class="container mx-auto px-6">
+        <div class="mb-16">
+            <Reveal direction="left">
+                <h2
+                    class="text-4xl md:text-5xl font-serif mb-6 leading-tight text-brand"
+                >
+                    Especialista em <br />
+                    <span class="italic">Unhas de Gel</span>
+                </h2>
+            </Reveal>
+            <Reveal direction="left" delay={200}>
+                <p class="text-charcoal/85 font-normal mb-10 max-w-lg">
+                    Foco exclusivo em unhas de gel naturais e esmaltadas
+                    (lisas). Técnicas avançadas para quem busca durabilidade e
+                    elegância.
+                    <span class="block mt-2 text-brand/70 text-sm italic"
+                        >* Não realizamos decorações ou nail art.</span
+                    >
+                </p>
+            </Reveal>
+        </div>
+
+        <div
+            id="service-cards"
+            class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+        >
+            {
+                services.map((service, index) => (
+                    <Reveal direction="up" delay={index * 200}>
+                        <div class="group h-full bg-[#111111] p-10 border border-white/5 hover:border-brand/30 transition-all duration-500 rounded-sm flex flex-col">
+                            <div class="mb-8 p-3 bg-brand/10 rounded-full w-fit group-hover:bg-brand group-hover:text-white transition-colors duration-500">
+                                <service.icon size={24} />
+                            </div>
+                            <h3 class="text-xl font-serif mb-4 text-white">
+                                {service.title}
+                            </h3>
+                            <p class="text-white/60 text-sm font-normal mb-6 flex-grow">
+                                {service.description}
+                            </p>
+                            <div class="mb-8 text-brand font-semibold">
+                                {service.price}
+                            </div>
+
+                            <a
+                                href={getWhatsAppLink(service.message)}
+                                target="_blank"
+                                class="w-full py-3 px-6 border border-brand/40 text-brand text-center text-xs uppercase tracking-widest hover:bg-brand hover:text-white transition-all duration-300 rounded-sm"
+                            >
+                                Selecionar
+                            </a>
+                        </div>
+                    </Reveal>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes pulse-slow {
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+    }
+    .animate-pulse-slow {
+        animation: pulse-slow 3s infinite ease-in-out;
+    }
+</style>

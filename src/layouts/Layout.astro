@@ -1,0 +1,84 @@
+---
+import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
+import DynamicBackground from "../components/ui/DynamicBackground.astro";
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="Ateliê das Unhas - Estética e Bem-estar. Atendimento premium e especializado."
+        />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <ViewTransitions />
+    </head>
+    <body>
+        <DynamicBackground />
+        <slot />
+
+        <script>
+            import Lenis from "lenis";
+
+            // Initialize Lenis for smooth scroll
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                orientation: "vertical",
+                gestureOrientation: "vertical",
+                smoothWheel: true,
+                wheelMultiplier: 1,
+                touchMultiplier: 2,
+                infinite: false,
+            });
+
+            function raf(time: number) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+
+            // Handle reveal animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px",
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const delay =
+                            (entry.target as HTMLElement).dataset.delay || "0";
+                        setTimeout(() => {
+                            entry.target.classList.add("revealed");
+                        }, parseInt(delay));
+                        // observer.unobserve(entry.target); // Keep observing if we want it to animate every time? No, usually once.
+                    }
+                });
+            }, observerOptions);
+
+            document
+                .querySelectorAll(".reveal")
+                .forEach((el) => observer.observe(el));
+
+            // Re-run observer after ViewTransitions swap
+            document.addEventListener("astro:after-swap", () => {
+                document
+                    .querySelectorAll(".reveal")
+                    .forEach((el) => observer.observe(el));
+            });
+        </script>
+    </body>
+</html>

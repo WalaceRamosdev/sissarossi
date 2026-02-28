@@ -1,0 +1,87 @@
+---
+import Reveal from "../animations/Reveal.astro";
+---
+
+<section
+    class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+>
+    <!-- Background Image with Mask Reveal -->
+    <div class="absolute inset-0 z-0">
+        <div
+            class="hero-image-container w-full h-full bg-[url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1974&auto=format&fit=crop')] bg-cover bg-center opacity-30 scale-110"
+        >
+        </div>
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#050505]"
+        >
+        </div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10 text-center">
+        <Reveal delay={800} duration={1.2} className="overflow-hidden">
+            <h1 class="text-6xl md:text-8xl font-serif mb-6 hero-title">
+                Elegância em <br />
+                <span class="italic text-brand/80">cada detalhe</span>
+            </h1>
+        </Reveal>
+
+        <Reveal delay={1200} direction="up">
+            <p
+                class="text-lg md:text-xl text-charcoal/85 max-w-2xl mx-auto mb-10 font-normal tracking-wide"
+            >
+                Transformando cuidados em arte. Experimente o atendimento
+                premium que suas unhas merecem no coração da estética.
+            </p>
+        </Reveal>
+
+        <Reveal delay={1600} direction="up">
+            <a
+                href="/#services"
+                class="btn-premium inline-flex items-center gap-3 px-10 py-5 group"
+            >
+                Selecionar serviço
+                <span
+                    class="group-hover:translate-x-1 transition-transform duration-300"
+                    >→</span
+                >
+            </a>
+        </Reveal>
+    </div>
+
+    <!-- Decorative elements -->
+    <div
+        class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30"
+    >
+        <div class="w-px h-12 bg-brand"></div>
+    </div>
+</section>
+
+<style>
+    .hero-title {
+        filter: blur(10px);
+        opacity: 0;
+        animation: blur-reveal 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.8s;
+    }
+
+    @keyframes blur-reveal {
+        to {
+            filter: blur(0);
+            opacity: 1;
+        }
+    }
+
+    .hero-image-container {
+        animation: image-reveal 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @keyframes image-reveal {
+        from {
+            clip-path: circle(0% at 50% 50%);
+            transform: scale(1.2);
+        }
+        to {
+            clip-path: circle(100% at 50% 50%);
+            transform: scale(1);
+        }
+    }
+</style>

@@ -1,0 +1,116 @@
+---
+/**
+ * LaunchModal.astro
+ * Componente de modal para aviso de "Aguardando Lançamento"
+ */
+---
+
+<div
+    id="launch-modal"
+    class="fixed inset-0 z-[9999] flex items-center justify-center hidden opacity-0 transition-all duration-1000"
+>
+    <!-- Backdrop com desfoque profundo -->
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-2xl"></div>
+
+    <!-- Conteúdo do Modal -->
+    <div
+        id="launch-content"
+        class="relative z-10 p-10 md:p-20 max-w-3xl w-[92%] text-center border border-white/5 glass shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] transform scale-90 transition-all duration-1000 ease-out"
+    >
+        <!-- Elementos Decorativos -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-brand to-transparent"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-brand to-transparent"
+        >
+        </div>
+
+        <div class="relative">
+            <div class="inline-block mb-6 overflow-hidden">
+                <span
+                    class="text-brand text-[10px] md:text-xs uppercase tracking-[0.5em] font-medium block animate-reveal-up"
+                >
+                    Projeto em Produção
+                </span>
+            </div>
+
+            <h2
+                class="text-4xl md:text-6xl font-serif text-white mb-2 leading-tight animate-reveal-up"
+                style="animation-delay: 200ms;"
+            >
+                Aguardando Lançamento
+            </h2>
+
+            <div
+                class="mb-10 animate-reveal-up"
+                style="animation-delay: 400ms;"
+            >
+                <span
+                    class="font-serif italic text-3xl md:text-5xl text-brand-light block"
+                    >"Sissa Rossi"</span
+                >
+            </div>
+
+            <p
+                class="text-white/60 text-sm md:text-base max-w-lg mx-auto mb-12 leading-relaxed tracking-wide animate-reveal-up"
+                style="animation-delay: 600ms;"
+            >
+                Estamos preparando uma experiência digital à altura do nosso
+                atendimento. Em breve, você poderá explorar todos os nossos
+                serviços e agendar seu momento de beleza.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function initLaunchModal() {
+        const modal = document.getElementById("launch-modal");
+        const content = document.getElementById("launch-content");
+
+        if (!modal || !content) return;
+
+        // Mostrar modal após um pequeno delay para suavidade
+        setTimeout(() => {
+            modal.classList.remove("hidden");
+            // Force reflow
+            modal.offsetHeight;
+            modal.classList.remove("opacity-0");
+            modal.classList.add("opacity-100");
+            content.classList.remove("scale-90");
+            content.classList.add("scale-100");
+        }, 800);
+    }
+
+    // Inicializar
+    initLaunchModal();
+
+    // Re-inicializar em trocas de página (Astro View Transitions)
+    document.addEventListener("astro:after-swap", initLaunchModal);
+</script>
+
+<style>
+    .glass {
+        background: rgba(10, 10, 10, 0.4);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+    }
+
+    @keyframes reveal-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-reveal-up {
+        opacity: 0;
+        animation: reveal-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+</style>

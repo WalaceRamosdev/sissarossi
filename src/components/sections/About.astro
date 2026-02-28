@@ -1,0 +1,198 @@
+---
+import Typewriter from "../animations/Typewriter";
+import Reveal from "../animations/Reveal.astro";
+import { Image } from "astro:assets";
+import profissionalImg from "../../assets/images/profissional.png";
+import ambienteImg from "../../assets/images/ambiente.jpeg";
+---
+
+<section id="about" class="relative py-24 bg-transparent overflow-hidden">
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            <!-- Founder Photo with Circular Reveal -->
+            <div class="lg:w-1/2 relative">
+                <Reveal direction="none" className="relative z-20">
+                    <div class="relative">
+                        <Image
+                            src={profissionalImg}
+                            alt="Sissa Rossi - Especialista em Nails"
+                            class="w-80 h-80 md:w-[500px] md:h-[500px] object-cover rounded-full border-4 border-brand/20 shadow-[0_0_50px_rgba(192,138,126,0.3)] transition-transform duration-700 hover:scale-105 relative z-20"
+                            loading="lazy"
+                            format="webp"
+                        />
+                        <div
+                            class="absolute inset-[-25px] border border-brand/20 rounded-full animate-spin-slow z-10"
+                        >
+                        </div>
+                    </div>
+                </Reveal>
+
+                <div
+                    class="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 w-24 h-24 md:w-40 md:h-40 bg-premium-light border border-brand/5 rounded-full flex items-center justify-center -z-10 animate-float"
+                >
+                    <span
+                        class="font-serif italic text-brand/80 text-4xl md:text-6xl"
+                        >10+</span
+                    >
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="lg:w-1/2">
+                <div class="mb-4">
+                    <Typewriter
+                        client:visible
+                        text="Cuidando de você com amor..."
+                        delay={500}
+                    />
+                </div>
+
+                <Reveal direction="right" delay={200}>
+                    <h2
+                        class="text-4xl md:text-5xl font-serif mb-8 leading-tight text-brand"
+                    >
+                        Sissa <br />
+                        <span class="italic">Rossi</span>
+                    </h2>
+                    <div
+                        class="space-y-6 text-charcoal/85 font-normal leading-relaxed"
+                    >
+                        <p>
+                            Especialista em unhas de gel, meu trabalho é focado
+                            na naturalidade e saúde das unhas. Foco exclusivo em
+                            unhas lisas e elegantes, <span
+                                class="text-brand font-medium"
+                                >não trabalho com decorações (nail art)</span
+                            >.
+                        </p>
+                        <p>
+                            Acredito que a estética deve realçar a beleza que já
+                            existe em você através de acabamentos impecáveis e
+                            cores sofisticadas.
+                        </p>
+                    </div>
+                </Reveal>
+
+                <Reveal direction="up" delay={1100}>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 pt-8 border-t border-white/10"
+                    >
+                        {/* Horários */}
+                        <div class="space-y-4">
+                            <h4
+                                class="text-brand font-serif italic text-lg flex items-center gap-3"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-clock"
+                                    ><circle cx="12" cy="12" r="10"
+                                    ></circle><polyline
+                                        points="12 6 12 12 16 14"
+                                    ></polyline></svg
+                                >
+                                Agenda de Atendimento
+                            </h4>
+                            <div class="text-white/70 text-sm space-y-1">
+                                <p class="font-medium text-white/90">
+                                    Segunda a Sábado
+                                </p>
+                                <p>13:00 • 15:00 • 17:00 • 19:00</p>
+                            </div>
+                        </div>
+
+                        {/* Localização */}
+                        <div class="space-y-4">
+                            <h4
+                                class="text-brand font-serif italic text-lg flex items-center gap-3"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-map-pin"
+                                    ><path
+                                        d="M20 10c0 4.993-5.539 10.193-7.399 11.74a1.278 1.278 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                                    ></path><circle cx="12" cy="10" r="3"
+                                    ></circle></svg
+                                >
+                                Localização
+                            </h4>
+                            <div class="text-white/70 text-sm space-y-1">
+                                <p class="font-medium text-white/90">
+                                    Jardim Camburi
+                                </p>
+                                <p>Próximo à igreja católica</p>
+                                <p>Ao lado da academia Global</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-8 mt-12">
+                        <div class="text-center">
+                            <span class="block text-2xl font-serif text-brand"
+                                >500+</span
+                            >
+                            <span
+                                class="text-xs uppercase tracking-widest text-white/40"
+                                >Clientes Satisfeitas</span
+                            >
+                        </div>
+                        <div class="w-px h-10 bg-white/10"></div>
+                        <div class="text-center">
+                            <span class="block text-2xl font-serif text-brand"
+                                >100%</span
+                            >
+                            <span
+                                class="text-xs uppercase tracking-widest text-white/40"
+                                >Material Esterilizado</span
+                            >
+                        </div>
+                    </div>
+                </Reveal>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .animate-spin-slow {
+        animation: spin-slow 15s linear infinite;
+    }
+
+    @keyframes spin-slow {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+</style>

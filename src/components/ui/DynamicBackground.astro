@@ -1,0 +1,203 @@
+---
+
+---
+
+<div
+    class="fixed inset-0 -z-50 pointer-events-none overflow-hidden bg-[#050505]"
+>
+    <!-- Grain Overlay (Enhanced) -->
+    <div
+        class="absolute inset-0 opacity-[0.05] mix-blend-screen pointer-events-none"
+        style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"
+    >
+    </div>
+
+    <!-- Interactive Canvas for Particles -->
+    <canvas id="bg-canvas" class="absolute inset-0 opacity-60"></canvas>
+
+    <!-- Animated Silk Blobs (Enhanced for Dark) -->
+    <div
+        class="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-[radial-gradient(circle,rgba(192,138,126,0.15)_0%,transparent_70%)] rounded-full blur-[140px] animate-silk-1"
+    >
+    </div>
+    <div
+        class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-[radial-gradient(circle,rgba(211,167,157,0.12)_0%,transparent_70%)] rounded-full blur-[120px] animate-silk-2"
+    >
+    </div>
+    <div
+        class="absolute top-[30%] right-[10%] w-[40%] h-[40%] bg-[radial-gradient(circle,rgba(192,138,126,0.08)_0%,transparent_70%)] rounded-full blur-[100px] animate-silk-3"
+    >
+    </div>
+
+    <!-- Parallax Typography (Enhanced for Dark) -->
+    <div
+        class="absolute top-20 left-10 text-[18vw] font-serif text-white/[0.03] select-none whitespace-nowrap parallax-text"
+        data-speed="0.04"
+    >
+        <!--ELEGANCE-->
+    </div>
+    <div
+        class="absolute top-[45%] right-[-10%] text-[15vw] font-serif italic text-brand/[0.05] select-none whitespace-nowrap parallax-text"
+        data-speed="0.07"
+    >
+        <!--Ateliê das Unhas-->
+    </div>
+
+    <!-- Mouse Following Subtle Spotlight -->
+    <div
+        id="spotlight"
+        class="absolute inset-0 pointer-events-none transition-opacity duration-1000 opacity-0 md:opacity-100"
+        style="background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(192,138,126,0.08), transparent 80%);"
+    >
+    </div>
+</div>
+
+<style>
+    @keyframes silk-1 {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1) rotate(0deg);
+        }
+        33% {
+            transform: translate(5%, 10%) scale(1.1) rotate(5deg);
+        }
+        66% {
+            transform: translate(-5%, 5%) scale(0.9) rotate(-5deg);
+        }
+    }
+    @keyframes silk-2 {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1) rotate(0deg);
+        }
+        50% {
+            transform: translate(-10%, -10%) scale(1.2) rotate(-10deg);
+        }
+    }
+    @keyframes silk-3 {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1);
+        }
+        50% {
+            transform: translate(15%, -5%) scale(0.8);
+        }
+    }
+
+    .animate-silk-1 {
+        animation: silk-1 25s infinite alternate ease-in-out;
+    }
+    .animate-silk-2 {
+        animation: silk-2 30s infinite alternate-reverse ease-in-out;
+    }
+    .animate-silk-3 {
+        animation: silk-3 20s infinite alternate ease-in-out;
+    }
+
+    .parallax-text {
+        will-change: transform;
+    }
+</style>
+
+<script>
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Parallax Text Effect
+    document.querySelectorAll(".parallax-text").forEach((el) => {
+        const speed = parseFloat((el as HTMLElement).dataset.speed || "0.1");
+        gsap.to(el, {
+            y: (i, target) => -ScrollTrigger.maxScroll(window) * speed,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1.5,
+            },
+        });
+    });
+
+    // 2. Mouse Tracker for Spotlight
+    window.addEventListener("mousemove", (e) => {
+        const spotlight = document.getElementById("spotlight");
+        if (spotlight) {
+            const x = e.clientX;
+            const y = e.clientY;
+            spotlight.style.setProperty("--mouse-x", `${x}px`);
+            spotlight.style.setProperty("--mouse-y", `${y}px`);
+            spotlight.style.opacity = "1";
+        }
+    });
+
+    // 3. Canvas Particle System
+    const canvas = document.getElementById("bg-canvas") as HTMLCanvasElement;
+    if (canvas) {
+        const ctx = canvas.getContext("2d");
+        let particles: Particle[] = [];
+        const particleCount = 40;
+
+        class Particle {
+            x: number;
+            y: number;
+            size: number;
+            speedX: number;
+            speedY: number;
+            opacity: number;
+            color: string;
+
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.color = "#C08A7E";
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                if (!ctx) return;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(192, 138, 126, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener("resize", init);
+        init();
+        animate();
+    }
+</script>

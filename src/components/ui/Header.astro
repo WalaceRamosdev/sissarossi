@@ -1,0 +1,31 @@
+---
+import MobileMenu from "./MobileMenu";
+---
+
+<header class="fixed top-0 left-0 w-full z-50 glass">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="/" class="text-2xl font-serif text-charcoal tracking-tighter">
+            Sissa<span class="italic font-light">Rossi</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex gap-10 items-center">
+            <a
+                href="/#services"
+                class="text-sm uppercase tracking-widest text-charcoal/60 hover:text-brand transition-colors"
+                >Serviços</a
+            >
+            <a
+                href="/sobre"
+                class="text-sm uppercase tracking-widest text-charcoal/60 hover:text-brand transition-colors"
+                >Sobre</a
+            >
+            <a href="/#services" class="btn-premium py-2 px-6 text-xs"
+                >Selecionar Serviço</a
+            >
+        </div>
+
+        <!-- Mobile Navigation -->
+        <MobileMenu client:load />
+    </nav>
+</header>

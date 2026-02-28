@@ -1,0 +1,132 @@
+---
+import Reveal from "../animations/Reveal.astro";
+
+const prices = [
+    { name: "Aplicação", value: "R$ 195,00" },
+    { name: "Manutenção", value: "R$ 150,00" },
+];
+
+const additions = [
+    { name: "Esmaltação", value: "R$ 35,00" },
+    { name: "Pigmento", value: "R$ 30,00" },
+    { name: "Unha quebrada/reaplicar", value: "R$ 35,00" },
+    {
+        name: "Curativo cantinho comido ou danificado por lixa ou alicate",
+        value: "R$ 10,00",
+    },
+];
+---
+
+<section id="pricing" class="py-24 bg-transparent">
+    <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto">
+            <Reveal direction="up">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif mb-4 text-brand">
+                        Investimento
+                    </h2>
+                    <p
+                        class="text-charcoal/60 uppercase tracking-widest text-xs"
+                    >
+                        Tabela de Valores
+                    </p>
+                </div>
+            </Reveal>
+
+            <Reveal direction="up" delay={200}>
+                <div
+                    class="bg-[#111111] border border-white/5 p-8 md:p-12 rounded-sm shadow-2xl relative overflow-hidden group"
+                >
+                    <!-- Subtle Glow Effect -->
+                    <div
+                        class="absolute -top-24 -right-24 w-48 h-48 bg-brand/10 blur-[100px] rounded-full group-hover:bg-brand/20 transition-all duration-700"
+                    >
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="mb-12">
+                            <h3
+                                class="text-2xl font-serif text-white mb-8 border-b border-white/10 pb-4 inline-block"
+                            >
+                                Valores
+                            </h3>
+                            <div class="space-y-6">
+                                {
+                                    prices.map((item) => (
+                                        <div class="flex justify-between items-end border-b border-white/5 pb-2 hover:border-brand/30 transition-colors duration-300">
+                                            <span class="text-white/80 font-light">
+                                                {item.name}
+                                            </span>
+                                            <span class="text-brand font-serif text-lg">
+                                                {item.value}
+                                            </span>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3
+                                class="text-2xl font-serif text-white mb-8 border-b border-white/10 pb-4 inline-block"
+                            >
+                                Adicionais
+                            </h3>
+                            <div class="space-y-6">
+                                {
+                                    additions.map((item) => (
+                                        <div class="flex justify-between items-end border-b border-white/5 pb-2 hover:border-brand/30 transition-colors duration-300">
+                                            <span class="text-white/80 font-light pr-4">
+                                                {item.name}
+                                            </span>
+                                            <span class="text-brand font-serif text-lg whitespace-nowrap">
+                                                {item.value}
+                                            </span>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+                        <div
+                            class="mt-12 pt-8 border-t border-white/10 text-center space-y-6"
+                        >
+                            <div
+                                class="inline-block px-8 py-4 border-2 border-brand/40 bg-brand/10 rounded-sm shadow-[0_0_30px_rgba(192,138,126,0.15)]"
+                            >
+                                <p
+                                    class="text-brand text-sm md:text-base uppercase tracking-[0.3em] font-bold"
+                                >
+                                    Não trabalhamos com unhas decoradas
+                                </p>
+                                <p
+                                    class="text-white/60 text-[10px] uppercase tracking-widest mt-2 font-light"
+                                >
+                                    Foco exclusivo em naturalidade e
+                                    sofisticação
+                                </p>
+                            </div>
+
+                            <p
+                                class="text-white/40 text-xs italic leading-relaxed max-w-sm mx-auto pt-4"
+                            >
+                                * Para remoção sem aviso prévio é cobrado preço
+                                de manutenção.
+                            </p>
+
+                            <div class="pt-4">
+                                <a
+                                    href={`https://wa.me/5527999717063?text=${encodeURIComponent("Olá! Vi a tabela de valores e gostaria de agendar um horário.")}`}
+                                    target="_blank"
+                                    class="btn-premium inline-block px-12 py-4"
+                                >
+                                    Agendar meu horário
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Reveal>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+---
+export interface Props {
+    delay?: number;
+    direction?: "up" | "down" | "left" | "right" | "none";
+    duration?: number;
+    className?: string;
+}
+
+const {
+    delay = 0,
+    direction = "up",
+    duration = 0.8,
+    className = "",
+} = Astro.props;
+---
+
+<div
+    class={`reveal reveal-${direction} ${className}`}
+    data-delay={delay}
+    style={`transition-duration: ${duration}s;`}
+>
+    <slot />
+</div>
