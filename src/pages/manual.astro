@@ -7,667 +7,289 @@ import {
     Github,
     Settings,
     UploadCloud,
-    ExternalLink,
-    ChevronRight,
-    Info,
     ShieldCheck,
     Cpu,
     Sparkles,
     Gem,
+    ArrowRight,
 } from "lucide-react";
 
 const technologies = [
     {
-        name: "Astro (v5)",
-        description: "A força por trás da velocidade instantânea do seu site.",
-        color: "from-orange-500 via-red-500 to-rose-600",
+        name: "Astro",
+        description: "Garante que seu site carregue em menos de 1 segundo.",
         icon: Cpu,
     },
     {
-        name: "React",
-        description:
-            "Interface dinâmica para uma experiência fluida e moderna.",
-        color: "from-blue-400 via-indigo-500 to-blue-600",
-        icon: Sparkles,
-    },
-    {
         name: "Tailwind CSS",
-        description: "Estilo sob medida com precisão milimétrica e elegância.",
-        color: "from-cyan-400 via-sky-500 to-blue-500",
+        description: "Estilo moderno e personalizado com precisão.",
         icon: Gem,
     },
     {
-        name: "Framer Motion",
-        description:
-            "A alma do site: animações que encantam ao primeiro olhar.",
-        color: "from-purple-500 via-pink-500 to-rose-500",
-        icon: ExternalLink,
+        name: "Animações (Motion)",
+        description: "Efeitos suaves que trazem vida e luxo ao site.",
+        icon: Sparkles,
     },
 ];
 
 const structures = [
-    {
-        path: "src/pages/",
-        info: "Onde residem as páginas mestras do seu ecossistema digital.",
-        icon: "📄",
-    },
+    { path: "src/pages/", desc: "Páginas principais do site." },
     {
         path: "src/components/",
-        info: "Cada detalhe visual, do botão ao menu, orquestrado aqui.",
-        icon: "🧩",
+        desc: "Onde ficam as seções (Preços, Galeria, etc).",
     },
-    {
-        path: "src/assets/",
-        info: "Sua biblioteca de luxo: imagens otimizadas em alta definição.",
-        icon: "🖼️",
-    },
-    {
-        path: "src/styles/",
-        info: "O DNA da marca: onde a paleta de cores ganha vida.",
-        icon: "🎨",
-    },
+    { path: "src/assets/", desc: "Sua galeria de fotos e ícones." },
 ];
 ---
 
-<Layout title="Manual do Projeto | Sissa Rossi">
-    <div class="relative overflow-hidden">
-        <!-- Glamour Background Elements -->
-        <div
-            class="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden"
+<Layout title="Manual Técnico | Ateliê Sissa Rossi">
+    <div
+        class="min-h-screen bg-[#050505] text-white font-light pb-20 overflow-x-hidden"
+    >
+        <!-- Hero Header -->
+        <section
+            class="pt-32 pb-20 px-6 text-center border-b border-white/5 bg-gradient-to-b from-primary-gold/5 to-transparent"
         >
-            <div
-                class="absolute top-[10%] left-[-10%] w-[40%] h-[40%] bg-primary-gold/5 rounded-full blur-[120px] animate-pulse"
-            >
-            </div>
-            <div
-                class="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] bg-primary-gold/10 rounded-full blur-[150px] animate-pulse"
-                style="animation-delay: 2s;"
-            >
-            </div>
-            <div
-                class="absolute top-[40%] right-[20%] w-[30%] h-[30%] bg-white/5 rounded-full blur-[100px] animate-pulse"
-                style="animation-delay: 4s;"
-            >
-            </div>
-        </div>
-
-        <div
-            class="min-h-screen pt-40 pb-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10"
-        >
-            <!-- Header Premium -->
-            <header class="text-center mb-32 relative">
+            <div class="max-w-4xl mx-auto space-y-6">
                 <div
-                    class="inline-flex items-center px-5 py-2 rounded-full bg-white/5 border border-white/10 text-primary-gold text-xs font-semibold uppercase tracking-widest mb-10 backdrop-blur-md glow-gold-soft reveal"
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-gold/10 border border-primary-gold/20 text-primary-gold text-xs font-semibold tracking-widest uppercase"
                 >
-                    <ShieldCheck className="w-4 h-4 mr-2" />
-                    Entrega de Excelência
+                    <ShieldCheck size={14} />
+                    Documentação de Entrega
                 </div>
-
-                <div class="relative inline-block">
-                    <h1
-                        class="text-6xl md:text-8xl font-light text-white mb-8 tracking-tighter leading-tight reveal"
+                <h1
+                    class="text-5xl md:text-7xl font-serif text-white tracking-tight"
+                >
+                    Manual do <span class="text-primary-gold italic"
+                        >Projeto</span
                     >
-                        Manual do <span class="relative inline-block">
-                            <span class="text-primary-gold italic font-serif"
-                                >Projeto</span
-                            >
-                            <span
-                                class="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary-gold to-transparent opacity-50"
-                            ></span>
-                        </span>
-                    </h1>
-                </div>
-
+                </h1>
                 <p
-                    class="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto font-light leading-relaxed reveal"
-                    data-delay="200"
+                    class="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed"
                 >
-                    Propriedade Intelectual da <span
-                        class="text-white border-b border-white/20 pb-1"
-                        >Sissa Rossi</span
-                    >.
-                    <br class="hidden md:block" />
-                    Abaixo, a blueprint técnica do seu novo império digital.
+                    Este guia foi preparado para garantir que você tenha total
+                    controle sobre o seu novo ativo digital.
                 </p>
+            </div>
+        </section>
 
-                <!-- Scroll Indicator Decorative -->
-                <div
-                    class="mt-16 flex flex-col items-center animate-bounce opacity-30"
-                >
-                    <div
-                        class="w-px h-12 bg-gradient-to-b from-white to-transparent"
-                    >
-                    </div>
-                </div>
-            </header>
-
-            <div class="space-y-40">
-                <!-- Visão Geral Com Card Glamour -->
-                <section
-                    class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
-                >
-                    <div class="space-y-10 reveal">
-                        <div class="space-y-4">
-                            <h2
-                                class="text-4xl font-light text-white flex items-center tracking-tight"
-                            >
-                                <span
-                                    class="w-12 h-12 rounded-2xl bg-primary-gold/10 flex items-center justify-center mr-6 border border-primary-gold/20"
-                                >
-                                    <Info
-                                        className="w-6 h-6 text-primary-gold"
-                                    />
-                                </span>
-                                Arquitetura de Alto Nível
-                            </h2>
-                            <p
-                                class="text-white/60 leading-relaxed text-xl font-light"
-                            >
-                                Cada linha de código foi escrita para entregar
-                                luxo através da performance. Seu site utiliza o
-                                que há de mais avançado no mundo hoje.
-                            </p>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            {
-                                [
-                                    { title: "Performance", value: "100/100" },
-                                    { title: "Visual", value: "Premium" },
-                                    { title: "Mobile", value: "Ready" },
-                                    { title: "SEO", value: "Otimizado" },
-                                ].map((stat) => (
-                                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group hover:border-primary-gold/40 transition-all duration-500">
-                                        <div class="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">
-                                            {stat.title}
-                                        </div>
-                                        <div class="text-2xl text-primary-gold font-light">
-                                            {stat.value}
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
-
-                        <ul class="space-y-5 pt-4">
-                            {
-                                [
-                                    "Carregamento Híbrido Estático",
-                                    "Animações Baseadas em Física",
-                                    "Otimização de Imagens em Tempo Real",
-                                ].map((item) => (
-                                    <li class="flex items-center text-white/80 group">
-                                        <div class="w-2 h-2 rounded-full bg-primary-gold mr-4 shadow-[0_0_10px_rgba(255,215,0,0.5)] group-hover:scale-150 transition-transform" />
-                                        <span class="text-lg font-light tracking-wide">
-                                            {item}
-                                        </span>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-
-                    <div class="relative reveal" data-delay="300">
-                        <div
-                            class="absolute -inset-4 bg-gradient-to-tr from-primary-gold/20 via-transparent to-white/5 rounded-[40px] blur-2xl opacity-50"
-                        >
-                        </div>
-                        <div
-                            class="relative bg-black/40 backdrop-blur-xl rounded-[32px] border border-white/10 p-1 bg-gradient-to-br from-white/10 to-transparent"
-                        >
-                            <div
-                                class="rounded-[30px] overflow-hidden bg-[#0A0A0A] p-8 space-y-8"
-                            >
-                                <div class="flex items-center justify-between">
-                                    <div class="flex space-x-2">
-                                        <div
-                                            class="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.4)]"
-                                        >
-                                        </div>
-                                        <div
-                                            class="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_10px_rgba(245,158,11,0.4)]"
-                                        >
-                                        </div>
-                                        <div
-                                            class="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_10px_rgba(34,197,94,0.4)]"
-                                        >
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="text-white/20 font-mono text-xs tracking-widest uppercase"
-                                    >
-                                        System Core Status
-                                    </div>
-                                </div>
-
-                                <div class="space-y-6">
-                                    <div
-                                        class="p-5 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between group hover:bg-white/10 transition-colors cursor-default"
-                                    >
-                                        <div
-                                            class="flex items-center space-x-4"
-                                        >
-                                            <Github
-                                                className="w-8 h-8 text-white/40"
-                                            />
-                                            <div>
-                                                <div
-                                                    class="text-white/80 text-sm font-medium"
-                                                >
-                                                    Repositório GitHub
-                                                </div>
-                                                <div
-                                                    class="text-white/30 text-[10px] font-mono"
-                                                >
-                                                    github.com/WalaceRamosdev/sissarossi
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="px-3 py-1 rounded-md bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-tighter"
-                                        >
-                                            Conectado
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="p-5 rounded-xl bg-white/5 border border-white/5 space-y-4"
-                                    >
-                                        <div
-                                            class="flex justify-between items-end"
-                                        >
-                                            <div
-                                                class="text-white/60 text-xs uppercase tracking-widest"
-                                            >
-                                                Build Performance
-                                            </div>
-                                            <div
-                                                class="text-primary-gold text-xl font-light"
-                                            >
-                                                98.4%
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="w-full h-1 bg-white/5 rounded-full overflow-hidden"
-                                        >
-                                            <div
-                                                class="h-full bg-gradient-to-r from-primary-gold to-white w-[98%] shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-                                            >
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="text-center pt-4">
-                                        <div
-                                            class="text-[10px] text-white/20 font-mono uppercase tracking-[0.3em]"
-                                        >
-                                            Encrypted Storage active
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Core Tecnológico com Cards Luxo -->
-                <section class="space-y-20 relative px-4">
-                    <div class="text-center space-y-4 reveal">
+        <main class="max-w-5xl mx-auto px-6 mt-20 space-y-32">
+            <!-- Visão Geral -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <div class="space-y-8">
+                    <div class="space-y-4">
                         <h2
-                            class="text-5xl font-light text-white tracking-tight"
+                            class="text-3xl text-white font-medium flex items-center gap-4"
                         >
-                            Pedras <span
-                                class="text-primary-gold italic font-serif"
-                                >Preciosas</span>
+                            <span class="w-1.5 h-8 bg-primary-gold rounded-full"
+                            ></span>
+                            Arquitetura Premium
                         </h2>
-                        <p
-                            class="text-white/40 max-w-xl mx-auto text-lg font-light leading-relaxed"
-                        >
-                            As tecnologias escolhidas a dedo para compor a
-                            estrutura impecável do seu site.
+                        <p class="text-white/60 text-lg leading-relaxed">
+                            Seu site utiliza tecnologias de ponta para oferecer
+                            a melhor performance do mercado atual.
                         </p>
                     </div>
 
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-                    >
+                    <div class="grid grid-cols-2 gap-4">
                         {
-                            technologies.map((tech, idx) => (
-                                <div
-                                    class="group relative reveal"
-                                    data-delay={idx * 150}
-                                >
-                                    <div
-                                        class={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 transition-opacity duration-700 blur-[40px] rounded-[32px]`}
-                                    />
-                                    <div class="relative h-full bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-primary-gold/40 rounded-[32px] p-8 flex flex-col items-center text-center transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-default">
-                                        <div
-                                            class={`w-16 h-16 rounded-2xl bg-gradient-to-br ${tech.color} p-[2px] mb-8 group-hover:scale-110 transition-transform duration-700 shadow-lg`}
-                                        >
-                                            <div class="w-full h-full bg-[#0A0A0A] rounded-[14px] flex items-center justify-center">
-                                                <tech.icon className="w-8 h-8 text-white group-hover:text-primary-gold transition-colors duration-500" />
-                                            </div>
-                                        </div>
-                                        <h3 class="text-xl text-white font-medium mb-4 group-hover:text-primary-gold transition-colors">
-                                            {tech.name}
-                                        </h3>
-                                        <p class="text-white/50 text-sm leading-relaxed font-light">
-                                            {tech.description}
-                                        </p>
-                                    </div>
+                            [
+                                { label: "Performance", value: "100%" },
+                                { label: "SEO", value: "Otimizado" },
+                                { label: "Visual", value: "Premium" },
+                                { label: "Mobile", value: "Ready" },
+                            ].map((stat) => (
+                                <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                                    <span class="block text-[10px] text-white/30 uppercase tracking-widest mb-1">
+                                        {stat.label}
+                                    </span>
+                                    <span class="text-xl text-primary-gold font-medium">
+                                        {stat.value}
+                                    </span>
                                 </div>
                             ))
                         }
                     </div>
-                </section>
+                </div>
 
-                <!-- GitHub Card CTA Luxo -->
-                <section class="reveal">
+                <div
+                    class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 space-y-6 relative overflow-hidden group"
+                >
                     <div
-                        class="relative p-1 rounded-[40px] bg-gradient-to-br from-primary-gold/40 via-white/10 to-transparent overflow-hidden group"
+                        class="absolute -top-20 -right-20 w-40 h-40 bg-primary-gold/10 rounded-full blur-3xl group-hover:bg-primary-gold/20 transition-all"
                     >
-                        <div
-                            class="absolute inset-0 bg-[#0A0A0A] m-[1px] rounded-[39px]"
-                        >
-                        </div>
-                        <div
-                            class="relative p-12 lg:p-20 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent rounded-[39px] z-10 overflow-hidden"
-                        >
-                            <!-- Background Accent -->
-                            <div
-                                class="absolute -top-24 -right-24 w-96 h-96 bg-primary-gold/10 rounded-full blur-[100px] group-hover:bg-primary-gold/20 transition-all duration-1000"
-                            >
-                            </div>
-
-                            <div
-                                class="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center"
-                            >
-                                <div class="lg:col-span-3 space-y-10">
-                                    <div class="space-y-6">
-                                        <div
-                                            class="inline-flex items-center px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/40 tracking-widest uppercase"
-                                        >
-                                            <Code2 className="w-4 h-4 mr-3" />
-                                            Certificação de Código Aberto
-                                        </div>
-                                        <h2
-                                            class="text-4xl md:text-5xl font-light text-white leading-tight"
-                                        >
-                                            Suas chaves para o <span
-                                                class="text-primary-gold italic font-serif"
-                                                >Futuro</span>
-                                        </h2>
-                                        <p
-                                            class="text-white/60 text-xl font-light leading-relaxed"
-                                        >
-                                            O código-fonte é o ativo mais
-                                            valioso de um negócio digital. Ele é
-                                            seu, está seguro e acessível a
-                                            qualquer momento através do GitHub.
-                                        </p>
-                                    </div>
-
-                                    <div
-                                        class="flex flex-col sm:flex-row gap-6 pt-4"
-                                    >
-                                        <a
-                                            href="https://github.com/WalaceRamosdev/sissarossi.git"
-                                            target="_blank"
-                                            class="inline-flex items-center justify-center px-10 py-5 bg-primary-gold text-black font-semibold rounded-full hover:bg-white transition-all duration-500 hover:scale-105 shadow-[0_10px_30px_rgba(212,175,55,0.3)] group/btn"
-                                        >
-                                            <Github
-                                                className="w-6 h-6 mr-3 group-hover/btn:rotate-12 transition-transform"
-                                            />
-                                            Acessar Meu Repositório
-                                        </a>
-                                        <div
-                                            class="flex items-center px-6 text-white/40 text-sm font-light"
-                                        >
-                                            <ShieldCheck
-                                                className="w-5 h-5 mr-3 text-green-500"
-                                            />
-                                            Armazenamento Seguro
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lg:col-span-2 relative">
-                                    <div
-                                        class="aspect-square w-full max-w-[300px] mx-auto relative flex items-center justify-center"
-                                    >
-                                        <div
-                                            class="absolute inset-0 bg-primary-gold/20 rounded-full blur-3xl animate-pulse"
-                                        >
-                                        </div>
-                                        <div
-                                            class="relative w-full h-full rounded-full border border-white/10 flex items-center justify-center bg-black/40 backdrop-blur-xl group-hover:border-primary-gold/30 transition-all duration-700"
-                                        >
-                                            <Github
-                                                className="w-32 h-32 text-primary-gold/20"
-                                            />
-                                            <div
-                                                class="absolute inset-4 border-[0.5px] border-white/5 rounded-full"
-                                            >
-                                            </div>
-                                            <div
-                                                class="absolute inset-8 border-[0.5px] border-primary-gold/10 rounded-full animate-spin-slow"
-                                            >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </section>
+                    <h3 class="text-xl text-white font-medium">
+                        Controle de Versão
+                    </h3>
+                    <p class="text-white/50 leading-relaxed font-light">
+                        Seu código está seguro no GitHub. É o seu "cofre
+                        digital" onde cada mudança fica registrada.
+                    </p>
+                    <a
+                        href="https://github.com/WalaceRamosdev/sissarossi.git"
+                        target="_blank"
+                        class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-primary-gold/50 transition-all text-white/80 hover:text-white"
+                    >
+                        <div class="flex items-center gap-4">
+                            <Github size={24} />
+                            <div class="text-sm">
+                                <span class="block font-medium"
+                                    >Repositório Oficial</span
+                                >
+                                <span class="text-xs text-white/30"
+                                    >github.com/WalaceRamosdev/sissarossi</span
+                                >
+                            </div>
+                        </div>
+                        <ArrowRight size={18} class="text-primary-gold" />
+                    </a>
+                </div>
+            </section>
 
-                <!-- Footer de Manutenção Duplo -->
-                <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 reveal">
+            <!-- Tecnologias -->
+            <section class="space-y-12">
+                <div class="text-center space-y-4">
+                    <h2 class="text-4xl text-white font-serif tracking-tight">
+                        Poder Tecnológico
+                    </h2>
+                    <p class="text-white/40">
+                        O que faz o seu site ser diferente dos outros.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {
+                        technologies.map((tech) => (
+                            <div class="p-10 rounded-[32px] bg-white/[0.03] border border-white/10 hover:bg-white/[0.05] transition-all text-center space-y-6">
+                                <div class="w-16 h-16 mx-auto rounded-2xl bg-primary-gold/10 flex items-center justify-center text-primary-gold">
+                                    <tech.icon size={32} />
+                                </div>
+                                <div class="space-y-3">
+                                    <h3 class="text-xl text-white font-medium">
+                                        {tech.name}
+                                    </h3>
+                                    <p class="text-white/50 text-sm leading-relaxed">
+                                        {tech.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- Autonomia e Manutenção -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div
+                    class="space-y-8 p-10 rounded-[40px] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10"
+                >
                     <div
-                        class="space-y-10 p-10 lg:p-14 bg-white/[0.03] border border-white/10 rounded-[40px] backdrop-blur-md relative overflow-hidden group"
+                        class="w-12 h-12 rounded-xl bg-primary-gold/20 flex items-center justify-center text-primary-gold mb-6"
                     >
-                        <div
-                            class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity"
-                        >
-                            <FolderTree className="w-32 h-32 text-white" />
-                        </div>
-                        <h2
-                            class="text-3xl font-light text-white tracking-tight flex items-center"
-                        >
-                            <span
-                                class="w-10 h-10 rounded-xl bg-primary-gold/20 flex items-center justify-center mr-5"
-                            >
-                                <FolderTree
-                                    className="w-5 h-5 text-primary-gold"
-                                />
-                            </span>
-                            Estrutura Interna
-                        </h2>
-                        <div class="space-y-6">
-                            {
-                                structures.map((item) => (
-                                    <div class="group/item flex space-x-6 p-6 rounded-2xl border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-500">
-                                        <div class="text-3xl filter grayscale group-hover/item:grayscale-0 transition-all duration-500">
-                                            {item.icon}
-                                        </div>
-                                        <div class="space-y-1">
-                                            <div class="text-primary-gold font-mono text-sm tracking-widest">
-                                                {item.path}
-                                            </div>
-                                            <div class="text-white/50 text-sm font-light leading-relaxed">
-                                                {item.info}
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
+                        <Settings size={24} />
                     </div>
-
-                    <div class="space-y-12">
-                        <div
-                            class="p-10 lg:p-14 bg-gradient-to-br from-primary-gold/10 to-transparent border border-primary-gold/20 rounded-[40px] backdrop-blur-md relative group hover:border-primary-gold/40 transition-all duration-700"
-                        >
-                            <div class="space-y-8 relative z-10">
-                                <h2
-                                    class="text-3xl font-light text-white tracking-tight flex items-center"
-                                >
-                                    <span
-                                        class="w-10 h-10 rounded-xl bg-primary-gold/20 flex items-center justify-center mr-5"
-                                    >
-                                        <UploadCloud
-                                            className="w-5 h-5 text-primary-gold"
-                                        />
+                    <h2 class="text-2xl text-white font-medium italic">
+                        Manutenção Simplificada
+                    </h2>
+                    <p class="text-white/60 leading-relaxed font-light">
+                        Dividimos o site em blocos chamados "Componentes". Se
+                        você precisar mudar um preço ou um serviço, basta editar
+                        o componente correspondente.
+                    </p>
+                    <div class="space-y-3">
+                        {
+                            structures.map((s) => (
+                                <div class="flex items-center justify-between p-4 rounded-xl bg-black/40 border border-white/5">
+                                    <span class="text-primary-gold font-mono text-xs tracking-wider">
+                                        {s.path}
                                     </span>
-                                    Expansão Digital
-                                </h2>
-                                <p
-                                    class="text-white/60 text-lg font-light leading-relaxed"
-                                >
-                                    Sempre que seu negócio crescer, seu site
-                                    cresce junto. O sistema está pronto para
-                                    atualizações instantâneas via <strong
-                                        class="text-white">Vercel</strong
-                                    >.
-                                </p>
-                                <div
-                                    class="flex items-center space-x-3 text-primary-gold/80 text-sm font-medium tracking-widest uppercase"
-                                >
-                                    <div
-                                        class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.6)] animate-pulse"
-                                    >
-                                    </div>
-                                    Sistema Operacional & Online
-                                </div>
-                            </div>
-                            <div
-                                class="absolute -bottom-20 -right-20 w-64 h-64 bg-primary-gold/5 rounded-full blur-[80px] group-hover:bg-primary-gold/10 transition-all"
-                            >
-                            </div>
-                        </div>
-
-                        <div
-                            class="p-10 lg:p-14 bg-white/[0.03] border border-white/10 rounded-[40px] backdrop-blur-md flex flex-col justify-between"
-                        >
-                            <div class="space-y-6">
-                                <h2
-                                    class="text-3xl font-light text-white tracking-tight flex items-center"
-                                >
-                                    <span
-                                        class="w-10 h-10 rounded-xl bg-primary-gold/20 flex items-center justify-center mr-5"
-                                    >
-                                        <Settings
-                                            className="w-5 h-5 text-primary-gold"
-                                        />
+                                    <span class="text-white/40 text-[10px] uppercase font-bold tracking-widest">
+                                        {s.desc}
                                     </span>
-                                    Customização
-                                </h2>
-                                <p
-                                    class="text-white/60 text-lg font-light leading-relaxed"
-                                >
-                                    Seus preços e serviços estão organizados em
-                                    módulos simplificados. Mudanças de texto
-                                    podem ser feitas em minutos por qualquer
-                                    técnico especializado.
-                                </p>
-                            </div>
-                            <div class="pt-10 flex items-center space-x-2">
-                                <div class="h-[1px] flex-grow bg-white/10">
                                 </div>
-                                <div
-                                    class="text-[10px] text-white/20 uppercase tracking-[0.5em] font-mono"
-                                >
-                                    End of File
-                                </div>
-                                <div class="h-[1px] flex-grow bg-white/10">
-                                </div>
-                            </div>
-                        </div>
+                            ))
+                        }
                     </div>
-                </section>
+                </div>
 
-                <!-- Footer Premium Final -->
-                <footer class="text-center pt-24 space-y-12">
-                    <div class="relative inline-block px-12 py-8 group">
-                        <div
-                            class="absolute inset-0 border border-white/10 rounded-full scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700"
-                        >
+                <div class="space-y-12 py-6">
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 text-primary-gold">
+                            <UploadCloud size={24} />
+                            <h3 class="text-2xl font-medium tracking-tight">
+                                Atualizações Instantâneas
+                            </h3>
                         </div>
                         <p
-                            class="text-white/30 text-xs font-medium tracking-[0.5rem] uppercase mb-6"
+                            class="text-white/50 text-lg leading-relaxed font-light"
                         >
-                            Alpha Code Studios © 2026
+                            Estamos usando a **Vercel**. Isso significa que
+                            qualquer correção feita no código é publicada no seu
+                            site em segundos, automaticamente.
                         </p>
                         <div
-                            class="text-primary-gold font-serif italic text-3xl opacity-80 group-hover:opacity-100 transition-opacity"
+                            class="p-6 border-l-2 border-primary-gold/30 bg-primary-gold/5 rounded-r-2xl"
                         >
-                            "A excelência está nos detalhes invisíveis."
+                            <p class="text-primary-gold/80 italic text-sm">
+                                "O sistema está sempre online, seguro e pronto
+                                para receber novidades."
+                            </p>
                         </div>
                     </div>
 
-                    <div class="flex justify-center space-x-12 opacity-20">
-                        <div class="w-16 h-[0.5px] bg-white"></div>
-                        <div
-                            class="w-2 h-2 rounded-full border border-white flex items-center justify-center p-[2px]"
-                        >
-                            <div class="w-full h-full bg-white rounded-full">
-                            </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 text-white">
+                            <BookOpen size={24} />
+                            <h3 class="text-xl font-medium">Autonomia Total</h3>
                         </div>
-                        <div class="w-16 h-[0.5px] bg-white"></div>
+                        <p class="text-white/40 leading-relaxed">
+                            Qualquer desenvolvedor com conhecimento básico em
+                            Astro e React pode assumir o projeto no futuro,
+                            garantindo que você nunca fique "presa" a um único
+                            prestador de serviço.
+                        </p>
                     </div>
-                </footer>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-40 pt-20 border-t border-white/5 text-center px-6">
+            <div class="max-w-xl mx-auto space-y-8">
+                <p
+                    class="text-white/20 text-xs tracking-[0.5em] uppercase font-bold"
+                >
+                    Alpha Code © 2026
+                </p>
+                <div class="relative inline-block pb-4">
+                    <span class="text-primary-gold font-serif italic text-2xl"
+                        >A excelência está nos detalhes.</span
+                    >
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary-gold to-transparent opacity-40"
+                    >
+                    </div>
+                </div>
             </div>
-        </div>
+        </footer>
     </div>
 </Layout>
 
 <style>
-    /* Premium Animations */
-    .reveal {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Font definitions if needed, or using project defaults */
+    @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap");
+
+    :root {
+        --font-serif: "Playfair Display", serif;
+        --font-sans: "Inter", sans-serif;
     }
 
-    .reveal.revealed {
-        opacity: 1;
-        transform: translateY(0);
+    body {
+        font-family: var(--font-sans);
     }
 
-    .glow-gold-soft {
-        box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.2);
-    }
-
-    .animate-spin-slow {
-        animation: spin 8s linear infinite;
-    }
-
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    /* Silk Gradient for Typography maybe? */
     .font-serif {
-        font-family:
-            "Playfair Display", serif; /* Assumindo que o projeto use algo similar */
-    }
-
-    /* Custom scrollbar para esse ambiente de luxo */
-    ::-webkit-scrollbar {
-        width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.1);
-    }
-    ::-webkit-scrollbar-thumb {
-        background: rgba(212, 175, 55, 0.2);
-        border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: rgba(212, 175, 55, 0.4);
+        font-family: var(--font-serif);
     }
 </style>
