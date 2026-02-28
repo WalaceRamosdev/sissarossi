@@ -1,0 +1,346 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {
+    BookOpen,
+    Code2,
+    FolderTree,
+    Github,
+    Settings,
+    UploadCloud,
+    ExternalLink,
+    ChevronRight,
+    Info,
+} from "lucide-react";
+
+const technologies = [
+    {
+        name: "Astro (v5)",
+        description: "Performance máxima e carregamento ultra-rápido.",
+        color: "from-orange-500 to-red-500",
+    },
+    {
+        name: "React",
+        description: "Componentes interativos e modernos.",
+        color: "from-blue-400 to-blue-600",
+    },
+    {
+        name: "Tailwind CSS",
+        description: "Design premium e responsividade total.",
+        color: "from-cyan-400 to-sky-500",
+    },
+    {
+        name: "Framer Motion",
+        description: "Animações fluidas e experiência imersiva.",
+        color: "from-purple-500 to-pink-500",
+    },
+];
+
+const structures = [
+    {
+        path: "src/pages/",
+        info: "Contém as páginas principais (como esta que você está vendo!).",
+    },
+    {
+        path: "src/components/",
+        info: "As peças do site: Cabeçalho, Galeria, Serviços, etc.",
+    },
+    {
+        path: "src/assets/",
+        info: "Onde suas fotos em alta resolução são otimizadas.",
+    },
+    {
+        path: "src/styles/",
+        info: "A identidade visual: sua paleta de cores e fontes.",
+    },
+];
+---
+
+<Layout title="Manual do Projeto | Sissa Rossi">
+    <div
+        class="min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
+    >
+        <!-- Hero Section -->
+        <header class="text-center mb-20 animate-fade-in">
+            <div
+                class="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary-gold/80 text-sm mb-6 backdrop-blur-sm"
+            >
+                <BookOpen className="w-4 h-4 mr-2" />
+                Manual de Documentação técnica
+            </div>
+            <h1
+                class="text-5xl md:text-7xl font-light text-white mb-6 tracking-tight"
+            >
+                Manual do <span class="text-primary-gold">Projeto</span>
+            </h1>
+            <p
+                class="text-xl text-white/60 max-w-2xl mx-auto font-light leading-relaxed"
+            >
+                Bem-vinda, Sissa Rossi. Este documento foi criado para garantir
+                sua total autonomia e compreensão sobre seu novo ativo digital.
+            </p>
+        </header>
+
+        <div class="space-y-24">
+            <!-- Visão Geral -->
+            <section
+                class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+            >
+                <div class="space-y-6">
+                    <h2
+                        class="text-3xl font-light text-white flex items-center"
+                    >
+                        <Info className="w-8 h-8 mr-4 text-primary-gold" />
+                        Visão Geral
+                    </h2>
+                    <p class="text-white/70 leading-relaxed text-lg font-light">
+                        Seu site foi construído seguindo os mais altos padrões
+                        de desenvolvimento web moderno. Ele não é apenas uma
+                        página, mas uma ferramenta de alta performance otimizada
+                        para conversão e visibilidade.
+                    </p>
+                    <ul class="space-y-4">
+                        {
+                            [
+                                "Velocidade de carregamento otimizada",
+                                "SEO (Google) de alta pontuação",
+                                "Totalmente adaptável a qualquer tela",
+                            ].map((item) => (
+                                <li class="flex items-start text-white/80">
+                                    <ChevronRight className="w-5 h-5 mr-2 text-primary-gold shrink-0 mt-0.5" />
+                                    <span>{item}</span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <div
+                    class="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 p-8 backdrop-blur-md"
+                >
+                    <div
+                        class="absolute -top-10 -right-10 w-40 h-40 bg-primary-gold/10 rounded-full blur-3xl"
+                    >
+                    </div>
+                    <div
+                        class="absolute -bottom-10 -left-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"
+                    >
+                    </div>
+                    <div class="space-y-6 relative z-10">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500/50">
+                            </div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/50">
+                            </div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/50">
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <Github className="w-12 h-12 text-white/20" />
+                            <div>
+                                <div class="text-white/40 text-sm">
+                                    Status do Repositório
+                                </div>
+                                <div class="text-white font-mono text-xs mt-1">
+                                    sissarossi.git - Main Branch Online
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tecnologias -->
+            <section class="space-y-12">
+                <div class="text-center">
+                    <h2 class="text-3xl font-light text-white mb-4">
+                        Core Tecnológico
+                    </h2>
+                    <p class="text-white/60 mb-10">
+                        O que sustenta a sofisticação do seu site
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                    {
+                        technologies.map((tech) => (
+                            <div class="group relative bg-white/5 hover:bg-white/10 transition-all duration-500 rounded-2xl p-6 border border-white/10 hover:border-primary-gold/30">
+                                <div
+                                    class={`w-12 h-1 bg-gradient-to-r ${tech.color} rounded-full mb-6`}
+                                />
+                                <h3 class="text-white font-medium mb-2">
+                                    {tech.name}
+                                </h3>
+                                <p class="text-white/50 text-sm leading-relaxed">
+                                    {tech.description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- GitHub -->
+            <section
+                class="bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+            >
+                <div
+                    class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center"
+                >
+                    <div class="md:col-span-3 space-y-6">
+                        <div
+                            class="inline-flex items-center px-3 py-1 bg-white/10 rounded-full text-xs text-white/50 mb-2"
+                        >
+                            <Code2 className="w-3 h-3 mr-2" />
+                            Desenvolvimento Aberto
+                        </div>
+                        <h2 class="text-3xl font-light text-white">
+                            Onde está seu Código?
+                        </h2>
+                        <p
+                            class="text-white/70 text-lg font-light leading-relaxed"
+                        >
+                            O código-fonte completo está armazenado com
+                            segurança no GitHub. Pense nele como o "projeto de
+                            arquitetura" original da sua obra digital.
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-4">
+                            <a
+                                href="https://github.com/WalaceRamosdev/sissarossi.git"
+                                target="_blank"
+                                class="inline-flex items-center px-6 py-3 bg-primary-gold text-black font-medium rounded-full hover:bg-white transition-colors duration-300"
+                            >
+                                <Github className="w-5 h-5 mr-2" />
+                                Acessar Repositório
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 flex justify-center">
+                        <div
+                            class="w-48 h-48 rounded-full border border-white/10 flex items-center justify-center p-8 bg-black/40 backdrop-blur-sm relative"
+                        >
+                            <Github className="w-24 h-24 text-white/20" />
+                            <div
+                                class="absolute inset-0 border border-primary-gold/20 rounded-full animate-pulse"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Estrutura de Pastas -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                <div>
+                    <h2
+                        class="text-3xl font-light text-white mb-8 flex items-center"
+                    >
+                        <FolderTree
+                            className="w-8 h-8 mr-4 text-primary-gold"
+                        />
+                        Estrutura do Projeto
+                    </h2>
+                    <div class="space-y-4">
+                        {
+                            structures.map((item) => (
+                                <div class="p-5 border border-white/10 rounded-xl bg-white/5 hover:bg-white/[0.08] transition-all">
+                                    <div class="text-primary-gold font-mono text-sm mb-1">
+                                        {item.path}
+                                    </div>
+                                    <div class="text-white/60 text-sm leading-relaxed">
+                                        {item.info}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class="space-y-12">
+                    <div>
+                        <h2
+                            class="text-3xl font-light text-white mb-8 flex items-center"
+                        >
+                            <UploadCloud
+                                className="w-8 h-8 mr-4 text-primary-gold"
+                            />
+                            Hospedagem (Vercel)
+                        </h2>
+                        <div
+                            class="p-8 border border-white/10 rounded-3xl bg-black/20 backdrop-blur-md relative overflow-hidden group"
+                        >
+                            <p
+                                class="text-white/70 font-light leading-relaxed relative z-10"
+                            >
+                                Seu site está configurado com <strong
+                                    >Deploy Contínuo</strong
+                                >. Sempre que uma mudança é feita no código, o
+                                site se reconstrói sozinho em segundos.
+                            </p>
+                            <div
+                                class="mt-8 flex items-center text-primary-gold/80 text-sm relative z-10 group-hover:text-primary-gold transition-colors"
+                            >
+                                Status do Site: Ativo (Produção)
+                                <div
+                                    class="w-2 h-2 rounded-full bg-green-500 ml-3 animate-pulse"
+                                >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2
+                            class="text-3xl font-light text-white mb-8 flex items-center"
+                        >
+                            <Settings
+                                className="w-8 h-8 mr-4 text-primary-gold"
+                            />
+                            Manutenção
+                        </h2>
+                        <p class="text-white/60 font-light text-lg">
+                            Para você ter autonomia total, organizamos os textos
+                            dentro de componentes fáceis de editar. Preços e
+                            serviços estão nos arquivos do tipo <span
+                                class="text-primary-gold">.astro</span
+                            > dentro da pasta <span class="italic"
+                                >sections</span
+                            >.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center pt-20 border-t border-white/10">
+                <p class="text-white/30 text-sm mb-4">
+                    Desenvolvido com excelência pela Alpha Code © 2026
+                </p>
+                <div class="text-primary-gold/50 font-light italic">
+                    "Para que seu site seja tão impecável quanto o seu
+                    trabalho."
+                </div>
+            </footer>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .animate-fade-in {
+        animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Custom Glow Effects */
+    .glow-gold {
+        box-shadow: 0 0 40px -10px rgba(var(--gold-rgb), 0.2);
+    }
+</style>
